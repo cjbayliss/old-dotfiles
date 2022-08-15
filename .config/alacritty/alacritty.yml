@@ -2,6 +2,9 @@ font:
   normal:
     family: "Iosevka Fixed"
     style: "Regular"
+  bold:
+    family: "Iosevka Fixed"
+    style: "Medium"
   size: 14
 
 window:
