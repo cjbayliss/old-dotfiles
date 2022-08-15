@@ -12,9 +12,9 @@ window:
     columns: 180
     lines: 50
   padding:
-    x: 5
-    y: 25
-  decorations: transparent
+    x: 4
+    y: 4
+  dynamic_padding: true
 
 shell:
   program: /opt/homebrew/bin/fish
