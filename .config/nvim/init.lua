@@ -3,7 +3,34 @@ vim.o.cursorline = true
 vim.o.guicursor = ''
 vim.o.hidden = true
 vim.o.number = true
-vim.o.termguicolors = true
+
+-- 16 colourscheme
+vim.cmd([[
+hi Comment ctermfg=gray
+hi Todo ctermbg=NONE ctermfg=yellow cterm=bold
+
+hi CursorLine ctermbg=235 cterm=NONE
+hi CursorLineNr ctermbg=235 ctermfg=darkyellow cterm=NONE
+hi LineNr ctermfg=darkgray
+hi StatusLine ctermbg=235 ctermfg=white cterm=NONE
+hi MatchParen ctermbg=NONE ctermfg=red cterm=bold
+
+hi Constant ctermfg=NONE
+hi String ctermfg=darkgreen
+hi Number ctermfg=darkred
+hi Boolean ctermfg=darkred
+hi Float ctermfg=darkred
+hi Label ctermfg=darkred
+hi Tag ctermfg=darkred
+hi StorageClass ctermfg=darkred
+
+hi Identifier ctermfg=darkmagenta cterm=NONE
+hi Function ctermfg=darkyellow cterm=NONE
+hi Statement ctermfg=blue
+hi Operator ctermfg=darkyellow
+hi Delimiter ctermfg=darkblue
+hi Special ctermfg=cyan cterm=bold
+]])
 
 -- spaces please
 vim.o.expandtab = true
@@ -55,14 +82,6 @@ packer.startup(function()
     })
 
     use({
-        'metalelf0/jellybeans-nvim',
-        requires = 'rktjmp/lush.nvim',
-        config = function()
-            vim.cmd('colorscheme jellybeans-nvim')
-        end,
-    })
-
-    use({
         'ethanholz/nvim-lastplace',
         config = function()
             require('nvim-lastplace').setup()
@@ -88,13 +107,6 @@ packer.startup(function()
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
-        end,
-    })
-
-    use({
-        'norcalli/nvim-colorizer.lua',
-        config = function()
-            require('colorizer').setup({ '*', '!rst', '!vimwiki' })
         end,
     })
 
