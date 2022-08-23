@@ -24,6 +24,7 @@ hi Label ctermfg=darkred
 hi Tag ctermfg=darkred
 hi StorageClass ctermfg=darkred
 
+hi PreProc ctermfg=blue
 hi Identifier ctermfg=darkmagenta cterm=NONE
 hi Function ctermfg=darkyellow cterm=NONE
 hi Statement ctermfg=blue
