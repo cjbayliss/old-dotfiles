@@ -97,16 +97,6 @@ packer.startup(function()
         end,
     })
 
-    -- fennel
-    use({ 'Olical/conjure', ft = 'fennel' })
-    use({
-        'Olical/aniseed',
-        requires = { 'Olical/conjure' },
-        config = function()
-            vim.api.nvim_command('packadd packer.nvim')
-        end,
-    })
-
     -- the whole reason to use neovim
     use({
         'nvim-treesitter/nvim-treesitter',
