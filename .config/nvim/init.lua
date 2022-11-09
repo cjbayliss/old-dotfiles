@@ -139,6 +139,8 @@ packer.startup(function()
         end,
     })
 
+    use('fladson/vim-kitty')
+
     if firstRun then
         packer.sync()
     end
