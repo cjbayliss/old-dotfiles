@@ -109,6 +109,13 @@ packer.startup(function()
         end,
     })
 
+    use({
+        'folke/which-key.nvim',
+        config = function()
+            require('which-key').setup()
+        end,
+    })
+
     -- the whole reason to use neovim
     use({
         'nvim-treesitter/nvim-treesitter',
