@@ -80,4 +80,6 @@ if status is-interactive
 
     set -Ux EDITOR "nvim"
     set -Ux VISUAL "$EDITOR"
+    set -Ux MANPAGER "nvim +Man!"
+    set -Ux MANWIDTH 72
 end
