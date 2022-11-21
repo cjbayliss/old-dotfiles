@@ -116,6 +116,14 @@ packer.startup(function()
         end,
     })
 
+    use({
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('neogit').setup()
+        end,
+    })
+
     -- the whole reason to use neovim
     use({
         'nvim-treesitter/nvim-treesitter',
