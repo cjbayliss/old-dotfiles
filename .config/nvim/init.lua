@@ -270,7 +270,7 @@ packer.startup(function()
                 },
             })
 
-            function jump_to_def()
+            local function jump_to_def()
                 local ts_utils = require('nvim-treesitter.ts_utils')
                 local locals = require('nvim-treesitter.locals')
                 local buf = vim.api.nvim_get_current_buf()
@@ -291,7 +291,13 @@ packer.startup(function()
                 end
             end
 
-            vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua jump_to_def()<CR>', { noremap = true })
+            vim.api.nvim_set_keymap('n', 'gd', '', {
+                noremap = true,
+                callback = function()
+                    jump_to_def()
+                end,
+                desc = 'Jump to definition',
+            })
         end,
     })
 
