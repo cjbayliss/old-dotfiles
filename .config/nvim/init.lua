@@ -160,7 +160,7 @@ packer.startup(function()
             end
 
             -- python
-            require('lspconfig').pyright.setup({})
+            require('lspconfig').pyright.setup({ on_attach = on_attach })
 
             -- php
             require('lspconfig').phpactor.setup({ on_attach = on_attach })
