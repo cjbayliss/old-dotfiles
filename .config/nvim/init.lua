@@ -63,6 +63,9 @@ packer.startup(function()
         'kvrohit/rasmus.nvim',
         config = function()
             vim.api.nvim_exec('colorscheme rasmus', false)
+            -- FIXME: figure out how to use vim.api.nvim_set_hl to do this
+            vim.api.nvim_exec('highlight DiffAdd gui=NONE', false)
+            vim.api.nvim_exec('highlight DiffDelete gui=NONE', false)
         end,
     })
 
@@ -70,13 +73,6 @@ packer.startup(function()
         'ethanholz/nvim-lastplace',
         config = function()
             require('nvim-lastplace').setup()
-        end,
-    })
-
-    use({
-        'f-person/git-blame.nvim',
-        config = function()
-            vim.g.gitblame_message_template = '<sha>, <date>, <author>'
         end,
     })
 
@@ -98,7 +94,24 @@ packer.startup(function()
     use({
         'lewis6991/gitsigns.nvim',
         config = function()
-            require('gitsigns').setup()
+            require('gitsigns').setup({
+                current_line_blame = true,
+                current_line_blame_opts = {
+                    delay = 100,
+                },
+                current_line_blame_formatter = '<abbrev_sha>, <author>, <author_time:%Y-%m-%d>',
+                on_attach = function()
+                    vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { link = 'Comment' })
+                end,
+            })
+        end,
+    })
+
+    use({
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('neogit').setup()
         end,
     })
 
@@ -113,14 +126,6 @@ packer.startup(function()
         'folke/which-key.nvim',
         config = function()
             require('which-key').setup()
-        end,
-    })
-
-    use({
-        'TimUntersberger/neogit',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require('neogit').setup()
         end,
     })
 
