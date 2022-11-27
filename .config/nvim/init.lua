@@ -57,8 +57,13 @@ packer.startup(function()
     use({
         'kvrohit/rasmus.nvim',
         config = function()
+            vim.g.rasmus_italic_keywords = true
             vim.api.nvim_exec('colorscheme rasmus', false)
             -- FIXME: figure out how to use vim.api.nvim_set_hl to do this
+            vim.api.nvim_exec('highlight Keyword guifg=#de9bc8', false)
+            vim.api.nvim_exec('highlight String guifg=#61957f', false)
+            vim.api.nvim_exec('highlight Conditional guifg=#ffc591', false)
+            vim.api.nvim_exec('highlight Repeat guifg=#ffc591', false)
             vim.api.nvim_exec('highlight DiffAdd gui=NONE', false)
             vim.api.nvim_exec('highlight DiffDelete gui=NONE', false)
         end,
