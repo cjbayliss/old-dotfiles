@@ -246,8 +246,15 @@ packer.startup(function()
     -- the whole reason to use neovim
     use({
         'nvim-treesitter/nvim-treesitter',
-        requires = { 'nvim-treesitter/nvim-treesitter-refactor' },
-        run = ':TSUpdate',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    })
+
+    use({
+        'nvim-treesitter/nvim-treesitter-refactor',
+        after = 'nvim-treesitter',
         config = function()
             vim.o.updatetime = 50
             require('nvim-treesitter.configs').setup({
@@ -256,37 +263,20 @@ packer.startup(function()
                 refactor = {
                     highlight_definitions = { enable = true },
                     smart_rename = { enable = true },
-                    navigation = { enable = true },
+                    navigation = {
+                        enable = true,
+                        keymaps = {
+                            -- unbind these
+                            goto_definition = '<Nop>',
+                            goto_next_usage = '<Nop>',
+                            goto_previous_usage = '<Nop>',
+                            list_definitions = '<Nop>',
+                            list_definitions_toc = '<Nop>',
+                            -- fallback to lsp
+                            goto_definition_lsp_fallback = 'gd',
+                        },
+                    },
                 },
-            })
-
-            local function jump_to_def()
-                local ts_utils = require('nvim-treesitter.ts_utils')
-                local locals = require('nvim-treesitter.locals')
-                local buf = vim.api.nvim_get_current_buf()
-                local point = ts_utils.get_node_at_cursor()
-
-                if not point then
-                    return
-                end
-
-                local _, _, kind = locals.find_definition(point, buf)
-                local def = locals.find_definition(point, buf)
-
-                if tostring(kind) == 'nil' then
-                    local name = ts_utils.get_node_text(point, nil)[1]
-                    vim.cmd(string.format('tag %s', name))
-                else
-                    ts_utils.goto_node(def)
-                end
-            end
-
-            vim.api.nvim_set_keymap('n', 'gd', '', {
-                noremap = true,
-                callback = function()
-                    jump_to_def()
-                end,
-                desc = 'Jump to definition',
             })
         end,
     })
