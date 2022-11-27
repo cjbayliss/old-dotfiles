@@ -1,6 +1,6 @@
 -- general config
 vim.o.cursorline = true
-vim.o.guicursor = ''
+vim.o.guicursor = 'n-v-c:hor20,i-ci:ver20,a:blinkwait300-blinkon200-blinkoff150'
 vim.o.hidden = true
 vim.o.number = true
 vim.o.termguicolors = true
