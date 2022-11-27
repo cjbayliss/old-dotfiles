@@ -172,32 +172,23 @@ packer.startup(function()
             })
 
             -- nice icons
-            local signs = { Error = '✖', Warn = '‼', Hint = '●', Info = '○' }
-            for type, icon in pairs(signs) do
+            for _, type in ipairs({ 'Error', 'Warn', 'Hint', 'Info' }) do
                 local hl = 'DiagnosticSign' .. type
-                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+                vim.fn.sign_define(hl, { text = '●', texthl = hl, numhl = hl })
             end
 
             -- don't print diagnostic text in buffer
             vim.diagnostic.config({
                 virtual_text = false,
-                -- virtual_text = { prefix = '●' },
+                virtual_lines = { only_current_line = true },
             })
+        end,
+    })
 
-            -- display the diagnostic on hover
-            vim.api.nvim_create_autocmd('CursorHold', {
-                callback = function()
-                    local opts = {
-                        focusable = false,
-                        close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-                        border = 'rounded',
-                        source = 'always',
-                        prefix = ' ',
-                        scope = 'cursor',
-                    }
-                    vim.diagnostic.open_float(nil, opts)
-                end,
-            })
+    use({
+        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+        config = function()
+            require('lsp_lines').setup()
         end,
     })
 
