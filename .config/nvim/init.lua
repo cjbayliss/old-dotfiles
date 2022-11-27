@@ -5,6 +5,7 @@ vim.o.hidden = true
 vim.o.number = true
 vim.o.termguicolors = true
 vim.g.mapleader = ' '
+vim.o.signcolumn = 'yes'
 
 -- spaces please
 vim.o.expandtab = true
@@ -141,7 +142,6 @@ packer.startup(function()
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
             local on_attach = function(_, bufnr)
-                vim.o.signcolumn = 'number'
                 vim.keymap.set('n', '<Leader>k', vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr, desc = 'Show documentation for item at cursor' })
                 vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = 'Rename symbol' })
                 vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = 'Add workspace folder' })
