@@ -157,15 +157,26 @@ packer.startup(function()
                 vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = bufnr, desc = 'Go to type definition' })
             end
 
+            local capabilities = {
+                textDocument = {
+                    completion = {
+                        completionItem = {
+                            snippetSupport = false,
+                        },
+                    },
+                },
+            }
+
             -- python
-            require('lspconfig').pyright.setup({ on_attach = on_attach })
+            require('lspconfig').pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 
             -- php
-            require('lspconfig').phpactor.setup({ on_attach = on_attach })
+            require('lspconfig').phpactor.setup({ on_attach = on_attach, capabilities = capabilities })
 
             -- lua
             require('lspconfig').sumneko_lua.setup({
                 on_attach = on_attach,
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = { version = 'LuaJIT' },
@@ -202,7 +213,6 @@ packer.startup(function()
 
     use({
         'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('trouble').setup({
                 icons = false,
