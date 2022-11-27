@@ -23,9 +23,9 @@ for _, key in ipairs({ '<up>', '<down>', '<left>', '<right>' }) do
 end
 
 -- manage packages with packer, the use-package of neovim
-::PackerConfig::
+local firstRun = false
 local status, packer = pcall(require, 'packer')
-if not status then
+while not status do
     vim.fn.system({
         'git',
         'clone',
@@ -34,7 +34,7 @@ if not status then
     })
     vim.api.nvim_command('packadd packer.nvim')
     firstRun = true
-    goto PackerConfig
+    status, packer = pcall(require, 'packer')
 end
 
 packer.startup(function()
@@ -47,16 +47,6 @@ packer.startup(function()
 
     use({
         'wbthomason/packer.nvim',
-        config = function()
-            vim.api.nvim_exec(
-                [[
-              augroup Packer
-                autocmd!
-                autocmd BufWritePost init.lua PackerCompile
-              augroup end]],
-                false
-            )
-        end,
     })
 
     use({
