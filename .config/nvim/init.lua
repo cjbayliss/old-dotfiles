@@ -4,6 +4,7 @@ vim.o.guicursor = 'n-v-c:hor20,i-ci:ver20,a:blinkwait300-blinkon200-blinkoff150'
 vim.o.hidden = true
 vim.o.number = true
 vim.o.termguicolors = true
+vim.g.mapleader = ' '
 
 -- spaces please
 vim.o.expandtab = true
@@ -21,6 +22,10 @@ for _, key in ipairs({ '<up>', '<down>', '<left>', '<right>' }) do
         vim.api.nvim_set_keymap(mode, key, '', { noremap = true })
     end
 end
+
+-- general keybindings
+vim.api.nvim_set_keymap('', '<Leader>[', '<cmd>bprevious<CR>', { noremap = true, desc = 'Go to previous buffer' })
+vim.api.nvim_set_keymap('', '<Leader>]', '<cmd>bnext<CR>', { noremap = true, desc = 'Go to next buffer' })
 
 -- manage packages with packer, the use-package of neovim
 local firstRun = false
@@ -116,6 +121,10 @@ packer.startup(function()
         'folke/which-key.nvim',
         config = function()
             require('which-key').setup()
+            require('which-key').register({
+                ['gd'] = { 'Go to definition' },
+                ['grr'] = { 'Rename symbol' },
+            })
         end,
     })
 
@@ -123,30 +132,23 @@ packer.startup(function()
         'neovim/nvim-lspconfig',
         config = function()
             local opts = { noremap = true, silent = true }
-            vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-            -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-            local on_attach = function(client, bufnr)
-                local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-                vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-                vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-                vim.keymap.set('n', '<space>wl', function()
+            local on_attach = function(_, bufnr)
+                vim.keymap.set('n', '<Leader>k', vim.lsp.buf.hover, { noremap = true, silent = true, buffer = bufnr, desc = 'Show documentation for item at cursor' })
+                vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = 'Rename symbol' })
+                vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = 'Add workspace folder' })
+                vim.keymap.set('n', '<Leader>wl', function()
                     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                end, bufopts)
-                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-                vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-                vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-                vim.keymap.set('n', '<space>f', function()
+                end, { noremap = true, silent = true, buffer = bufnr, desc = 'List workspace folders' })
+                vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = 'Remove workspace folder' })
+                vim.keymap.set('n', 'grf', function()
                     vim.lsp.buf.format({ async = true })
-                end, bufopts)
+                end, { noremap = true, silent = true, buffer = bufnr, desc = 'Reformat buffer' })
+                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr, desc = 'Go to declaration' })
+                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr, desc = 'Go to implementation' })
+                vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = bufnr, desc = 'Go to type definition' })
             end
 
             -- python
@@ -204,7 +206,7 @@ packer.startup(function()
                 use_diagnostic_signs = true,
             })
 
-            vim.keymap.set('n', '<space>q', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
+            vim.keymap.set('n', '<Leader>g', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true, desc = 'Toggle diagnostics list' })
         end,
     })
 
