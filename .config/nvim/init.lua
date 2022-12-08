@@ -3,7 +3,6 @@ vim.o.cursorline = true
 vim.o.guicursor = 'n-v-c:hor20,i-ci:ver20,a:blinkwait300-blinkon200-blinkoff150'
 vim.o.hidden = true
 vim.o.number = true
-vim.o.termguicolors = true
 vim.g.mapleader = ' '
 vim.o.signcolumn = 'yes'
 
@@ -11,6 +10,49 @@ vim.o.signcolumn = 'yes'
 vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
+
+-- 256 compatible colour scheme inspired by Xcode and Modus Vivendi
+vim.api.nvim_exec('colorscheme lunaperche', false)
+
+vim.api.nvim_exec('highlight StatusLine cterm=NONE ctermbg=235', false)
+
+vim.api.nvim_exec('highlight Normal ctermfg=white cterm=italic', false)
+vim.api.nvim_exec('highlight Comment ctermfg=115 cterm=italic', false)
+vim.api.nvim_exec('highlight Constant ctermfg=153 cterm=bold', false)
+vim.api.nvim_exec('highlight Conditional ctermfg=209', false)
+vim.api.nvim_exec('highlight PreProc ctermfg=209', false)
+vim.api.nvim_exec('highlight Repeat ctermfg=209', false)
+vim.api.nvim_exec('highlight Function ctermfg=183', false)
+vim.api.nvim_exec('highlight Special ctermfg=183', false)
+vim.api.nvim_exec('highlight Delimiter ctermfg=250', false)
+vim.api.nvim_exec('highlight String ctermfg=111', false)
+vim.api.nvim_exec('highlight Float ctermfg=153', false)
+vim.api.nvim_exec('highlight Number ctermfg=153', false)
+vim.api.nvim_exec('highlight Boolean ctermfg=183 cterm=italic', false)
+vim.api.nvim_exec('highlight Type ctermfg=153', false)
+vim.api.nvim_exec('highlight Keyword ctermfg=122 cterm=italic', false)
+vim.api.nvim_exec('highlight Statement ctermfg=209', false)
+vim.api.nvim_exec('highlight Todo ctermfg=216 cterm=italic,bold', false)
+vim.api.nvim_exec('highlight MatchParen ctermfg=222 cterm=reverse', false)
+
+vim.api.nvim_exec('highlight CursorLine ctermbg=235', false)
+vim.api.nvim_exec('highlight CursorLineNr ctermbg=235 ctermfg=209 cterm=NONE', false)
+vim.api.nvim_exec('highlight LineNr ctermbg=233 ctermfg=248', false)
+
+vim.api.nvim_exec('highlight DiagnosticWarn ctermfg=222', false)
+vim.api.nvim_exec('highlight WarningMsg ctermfg=222 cterm=NONE', false)
+vim.api.nvim_exec('highlight DiagnosticError ctermfg=203', false)
+vim.api.nvim_exec('highlight ErrorMsg ctermbg=NONE ctermfg=203 cterm=NONE', false)
+vim.api.nvim_exec('highlight DiagnosticInfo ctermfg=153', false)
+vim.api.nvim_exec('highlight DiagnosticHint ctermfg=115', false)
+
+vim.api.nvim_exec('highlight Search ctermbg=24 ctermfg=231', false)
+vim.api.nvim_exec('highlight IncSearch ctermbg=55 ctermfg=231', false)
+vim.api.nvim_exec('highlight CurSearch ctermbg=55 ctermfg=231', false)
+
+vim.api.nvim_exec('highlight DiffAdd ctermbg=NONE ctermfg=115', false)
+vim.api.nvim_exec('highlight DiffDelete ctermbg=NONE ctermfg=203', false)
+vim.api.nvim_exec('highlight DiffChange ctermbg=NONE ctermfg=216', false)
 
 -- undo these format options
 vim.api.nvim_create_autocmd({ 'FileType' }, {
@@ -53,21 +95,6 @@ packer.startup(function()
 
     use({
         'wbthomason/packer.nvim',
-    })
-
-    use({
-        'kvrohit/rasmus.nvim',
-        config = function()
-            vim.g.rasmus_italic_keywords = true
-            vim.api.nvim_exec('colorscheme rasmus', false)
-            -- FIXME: figure out how to use vim.api.nvim_set_hl to do this
-            vim.api.nvim_exec('highlight Keyword guifg=#de9bc8', false)
-            vim.api.nvim_exec('highlight String guifg=#61957f', false)
-            vim.api.nvim_exec('highlight Conditional guifg=#ffc591', false)
-            vim.api.nvim_exec('highlight Repeat guifg=#ffc591', false)
-            vim.api.nvim_exec('highlight DiffAdd gui=NONE', false)
-            vim.api.nvim_exec('highlight DiffDelete gui=NONE', false)
-        end,
     })
 
     use({
