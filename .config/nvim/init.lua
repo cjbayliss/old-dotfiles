@@ -136,14 +136,6 @@ packer.startup(function()
     })
 
     use({
-        'TimUntersberger/neogit',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require('neogit').setup()
-        end,
-    })
-
-    use({
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
@@ -316,8 +308,6 @@ packer.startup(function()
             })
         end,
     })
-
-    use('fladson/vim-kitty')
 
     if firstRun then
         packer.sync()
