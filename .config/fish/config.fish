@@ -9,8 +9,8 @@ if status is-interactive
     set -U fish_color_cancel              -r
     set -U fish_color_command             'white' '--bold'
     set -U fish_color_comment             brblue
-    set -U fish_color_cwd                 yellow
-    set -U fish_color_cwd_root            red
+    set -U fish_color_cwd                 brgreen
+    set -U fish_color_cwd_root            brred
     set -U fish_color_end                 brmagenta
     set -U fish_color_error               brred
     set -U fish_color_escape              brcyan
@@ -20,15 +20,15 @@ if status is-interactive
     set -U fish_color_normal              normal
     set -U fish_color_operator            normal
     set -U fish_color_param               normal
-    set -U fish_color_quote               yellow
+    set -U fish_color_quote               bryellow
     set -U fish_color_redirection         bryellow
     set -U fish_color_search_match        'bryellow' '--background=brblack'
     set -U fish_color_selection           'white' '--bold' '--background=brblack'
-    set -U fish_color_status              red
-    set -U fish_color_user                green
+    set -U fish_color_status              brred
+    set -U fish_color_user                brgreen
     set -U fish_color_valid_path          --underline
     set -U fish_pager_color_completion    normal
-    set -U fish_pager_color_description   yellow
+    set -U fish_pager_color_description   bryellow
     set -U fish_pager_color_prefix        'white' '--bold' '--underline'
     set -U fish_pager_color_progress      '-r' 'white'
 
@@ -65,9 +65,9 @@ if status is-interactive
         set_color normal
 
         # git stuff
-        set_color magenta
+        set_color brmagenta
         printf '%s' (__git_branch)
-        set_color red
+        set_color brred
         printf '%s ' (__git_status)
         set_color normal
 
@@ -77,9 +77,11 @@ if status is-interactive
 
     # aliases
     alias luafmt "stylua --config-path ~/.config/stylua/stylua.toml"
+    alias podman-cleanup "podman image rm (podman image ls -f dangling=1 -q)"
 
     set -Ux EDITOR "nvim"
     set -Ux VISUAL "$EDITOR"
     set -Ux MANPAGER "nvim +Man!"
     set -Ux MANWIDTH 72
+    set -Ux PAGER "less --mouse --wheel-lines=3"
 end
