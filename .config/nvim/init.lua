@@ -209,9 +209,6 @@ packer.startup(function()
             -- python
             require('lspconfig').pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 
-            -- php
-            require('lspconfig').phpactor.setup({ on_attach = on_attach, capabilities = capabilities })
-
             -- lua
             require('lspconfig').sumneko_lua.setup({
                 on_attach = on_attach,
