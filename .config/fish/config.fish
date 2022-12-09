@@ -78,6 +78,7 @@ if status is-interactive
     # aliases
     alias luafmt "stylua --config-path ~/.config/stylua/stylua.toml"
     alias podman-cleanup "podman image rm (podman image ls -f dangling=1 -q)"
+    alias podman-cleanup-all "podman image rm (podman image ls -q)"
 
     set -Ux EDITOR "nvim"
     set -Ux VISUAL "$EDITOR"
