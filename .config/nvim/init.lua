@@ -15,6 +15,7 @@ vim.o.softtabstop = 4
 vim.api.nvim_exec('colorscheme lunaperche', false)
 
 vim.api.nvim_exec('highlight StatusLine cterm=NONE ctermbg=235', false)
+vim.api.nvim_exec('highlight VertSplit ctermbg=NONE', false)
 
 vim.api.nvim_exec('highlight Normal ctermfg=white cterm=italic', false)
 vim.api.nvim_exec('highlight Comment ctermfg=115 cterm=italic', false)
@@ -130,6 +131,9 @@ packer.startup(function()
                 current_line_blame_formatter = '<abbrev_sha>, <author>, <author_time:%Y-%m-%d>',
                 on_attach = function()
                     vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { link = 'Comment' })
+                    vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'DiffAdd' })
+                    vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'DiffChange' })
+                    vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'DiffDelete' })
                 end,
             })
         end,
