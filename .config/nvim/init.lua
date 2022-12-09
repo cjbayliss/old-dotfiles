@@ -14,7 +14,7 @@ vim.o.softtabstop = 4
 -- 256 compatible colour scheme inspired by Xcode and Modus Vivendi
 vim.api.nvim_exec('colorscheme lunaperche', false)
 
-vim.api.nvim_exec('highlight StatusLine cterm=NONE ctermbg=235', false)
+vim.api.nvim_exec('highlight StatusLine cterm=NONE ctermbg=233', false)
 vim.api.nvim_exec('highlight VertSplit ctermbg=NONE', false)
 
 vim.api.nvim_exec('highlight Normal ctermfg=white cterm=italic', false)
@@ -36,9 +36,9 @@ vim.api.nvim_exec('highlight Statement ctermfg=209', false)
 vim.api.nvim_exec('highlight Todo ctermfg=216 cterm=italic,bold', false)
 vim.api.nvim_exec('highlight MatchParen ctermfg=222 cterm=reverse', false)
 
-vim.api.nvim_exec('highlight CursorLine ctermbg=235', false)
-vim.api.nvim_exec('highlight CursorLineNr ctermbg=235 ctermfg=209 cterm=NONE', false)
-vim.api.nvim_exec('highlight LineNr ctermbg=233 ctermfg=248', false)
+vim.api.nvim_exec('highlight CursorLine ctermbg=233', false)
+vim.api.nvim_exec('highlight CursorLineNr ctermbg=233 ctermfg=white cterm=bold', false)
+vim.api.nvim_exec('highlight LineNr ctermfg=248', false)
 
 vim.api.nvim_exec('highlight DiagnosticWarn ctermfg=222', false)
 vim.api.nvim_exec('highlight WarningMsg ctermfg=222 cterm=NONE', false)
