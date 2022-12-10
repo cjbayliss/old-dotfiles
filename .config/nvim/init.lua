@@ -5,6 +5,7 @@ vim.o.hidden = true
 vim.o.number = true
 vim.g.mapleader = ' '
 vim.o.signcolumn = 'yes'
+vim.o.shell = '/usr/bin/env fish'
 
 -- spaces please
 vim.o.expandtab = true
@@ -15,6 +16,7 @@ vim.o.softtabstop = 4
 vim.api.nvim_exec('colorscheme lunaperche', false)
 
 vim.api.nvim_exec('highlight StatusLine cterm=NONE ctermbg=233', false)
+vim.api.nvim_exec('highlight StatusLineNc cterm=NONE ctermbg=0', false)
 vim.api.nvim_exec('highlight VertSplit ctermbg=NONE', false)
 
 vim.api.nvim_exec('highlight Normal ctermfg=white cterm=italic', false)
