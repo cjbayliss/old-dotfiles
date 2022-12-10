@@ -170,6 +170,7 @@ packer.startup(function()
             vim.keymap.set('n', '<Leader>fo', builtin.oldfiles, { desc = 'List and open previously opened files' })
             vim.keymap.set('n', '<Leader>fr', builtin.lsp_references, { desc = 'Find references for object at point' })
             vim.keymap.set('n', '<Leader>fs', builtin.lsp_document_symbols, { desc = 'List and select symbols' })
+            vim.keymap.set('n', '<Leader>g', builtin.diagnostics, { desc = 'Open diagnostics list' })
         end,
     })
 
@@ -241,21 +242,6 @@ packer.startup(function()
         'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
         config = function()
             require('lsp_lines').setup()
-        end,
-    })
-
-    use({
-        'folke/trouble.nvim',
-        config = function()
-            require('trouble').setup({
-                icons = false,
-                fold_closed = '▶',
-                fold_open = '▼',
-                indent_lines = false,
-                use_diagnostic_signs = true,
-            })
-
-            vim.keymap.set('n', '<Leader>g', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true, desc = 'Toggle diagnostics list' })
         end,
     })
 
