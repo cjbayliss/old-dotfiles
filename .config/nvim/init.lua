@@ -230,18 +230,10 @@ packer.startup(function()
                 vim.fn.sign_define(hl, { text = '●', texthl = hl, numhl = hl })
             end
 
-            -- don't print diagnostic text in buffer
+            -- only show when on line
             vim.diagnostic.config({
-                virtual_text = false,
                 virtual_lines = { only_current_line = true },
             })
-        end,
-    })
-
-    use({
-        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-        config = function()
-            require('lsp_lines').setup()
         end,
     })
 
