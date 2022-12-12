@@ -41,6 +41,7 @@ vim.api.nvim_exec('highlight MatchParen ctermfg=222 cterm=reverse', false)
 vim.api.nvim_exec('highlight CursorLine ctermbg=233', false)
 vim.api.nvim_exec('highlight CursorLineNr ctermbg=233 ctermfg=white cterm=bold', false)
 vim.api.nvim_exec('highlight LineNr ctermfg=248', false)
+vim.api.nvim_exec('highlight EndOfBuffer ctermfg=248', false)
 
 vim.api.nvim_exec('highlight DiagnosticWarn ctermfg=222', false)
 vim.api.nvim_exec('highlight WarningMsg ctermfg=222 cterm=NONE', false)
@@ -208,6 +209,19 @@ packer.startup(function()
                     },
                 },
             }
+
+            -- rust
+            require('lspconfig').rust_analyzer.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    ['rust-analyzer'] = {
+                        checkOnSave = {
+                            command = 'clippy',
+                        },
+                    },
+                },
+            })
 
             -- lua
             require('lspconfig').sumneko_lua.setup({
