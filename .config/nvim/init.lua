@@ -200,20 +200,9 @@ packer.startup(function()
                 vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = bufnr, desc = 'Go to type definition' })
             end
 
-            local capabilities = {
-                textDocument = {
-                    completion = {
-                        completionItem = {
-                            snippetSupport = false,
-                        },
-                    },
-                },
-            }
-
             -- rust
             require('lspconfig').rust_analyzer.setup({
                 on_attach = on_attach,
-                capabilities = capabilities,
                 settings = {
                     ['rust-analyzer'] = {
                         checkOnSave = {
@@ -226,7 +215,6 @@ packer.startup(function()
             -- lua
             require('lspconfig').sumneko_lua.setup({
                 on_attach = on_attach,
-                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = { version = 'LuaJIT' },
@@ -249,32 +237,6 @@ packer.startup(function()
             -- only show when on line
             vim.diagnostic.config({
                 virtual_lines = { only_current_line = true },
-            })
-        end,
-    })
-
-    use({
-        'hrsh7th/nvim-cmp',
-        requires = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer' },
-        config = function()
-            local cmp = require('cmp')
-
-            cmp.setup({
-                window = {
-                    documentation = cmp.config.window.bordered(),
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-                }),
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                }, {
-                    { name = 'buffer' },
-                }),
             })
         end,
     })
