@@ -13,50 +13,75 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 
 -- 256 compatible colour scheme inspired by Xcode and Modus Vivendi
-vim.api.nvim_exec('colorscheme lunaperche', false)
+vim.cmd.colorscheme('lunaperche')
 
-vim.api.nvim_exec('highlight StatusLine cterm=NONE ctermbg=233', false)
-vim.api.nvim_exec('highlight StatusLineNc cterm=NONE ctermbg=0', false)
-vim.api.nvim_exec('highlight VertSplit ctermbg=NONE', false)
+vim.cmd.highlight('StatusLine cterm=NONE ctermbg=233')
+vim.cmd.highlight('StatusLineNc cterm=NONE ctermbg=0')
+vim.cmd.highlight('VertSplit ctermbg=NONE')
 
-vim.api.nvim_exec('highlight Normal ctermfg=white cterm=italic', false)
-vim.api.nvim_exec('highlight Comment ctermfg=115 cterm=italic', false)
-vim.api.nvim_exec('highlight Constant ctermfg=153 cterm=bold', false)
-vim.api.nvim_exec('highlight Conditional ctermfg=209', false)
-vim.api.nvim_exec('highlight PreProc ctermfg=209', false)
-vim.api.nvim_exec('highlight Repeat ctermfg=209', false)
-vim.api.nvim_exec('highlight Function ctermfg=183', false)
-vim.api.nvim_exec('highlight Special ctermfg=183', false)
-vim.api.nvim_exec('highlight Delimiter ctermfg=250', false)
-vim.api.nvim_exec('highlight String ctermfg=111', false)
-vim.api.nvim_exec('highlight Float ctermfg=153', false)
-vim.api.nvim_exec('highlight Number ctermfg=153', false)
-vim.api.nvim_exec('highlight Boolean ctermfg=183 cterm=italic', false)
-vim.api.nvim_exec('highlight Type ctermfg=153', false)
-vim.api.nvim_exec('highlight Keyword ctermfg=122 cterm=italic', false)
-vim.api.nvim_exec('highlight Statement ctermfg=209', false)
-vim.api.nvim_exec('highlight Todo ctermfg=216 cterm=italic,bold', false)
-vim.api.nvim_exec('highlight MatchParen ctermfg=222 cterm=reverse', false)
+vim.cmd.highlight('Normal ctermfg=white cterm=italic')
+vim.cmd.highlight('Comment ctermfg=115 cterm=italic')
+vim.cmd.highlight('Constant ctermfg=153 cterm=bold')
+vim.cmd.highlight('Conditional ctermfg=209')
+vim.cmd.highlight('PreProc ctermfg=209')
+vim.cmd.highlight('Repeat ctermfg=209')
+vim.cmd.highlight('Function ctermfg=183')
+vim.cmd.highlight('Special ctermfg=183')
+vim.cmd.highlight('Delimiter ctermfg=250')
+vim.cmd.highlight('String ctermfg=111')
+vim.cmd.highlight('Float ctermfg=153')
+vim.cmd.highlight('Number ctermfg=153')
+vim.cmd.highlight('Boolean ctermfg=183 cterm=italic')
+vim.cmd.highlight('Type ctermfg=153')
+vim.cmd.highlight('Keyword ctermfg=122 cterm=italic')
+vim.cmd.highlight('Statement ctermfg=209')
+vim.cmd.highlight('Todo ctermfg=216 cterm=italic,bold')
+vim.cmd.highlight('MatchParen ctermfg=222 cterm=reverse')
 
-vim.api.nvim_exec('highlight CursorLine ctermbg=233', false)
-vim.api.nvim_exec('highlight CursorLineNr ctermbg=233 ctermfg=white cterm=bold', false)
-vim.api.nvim_exec('highlight LineNr ctermfg=248', false)
-vim.api.nvim_exec('highlight EndOfBuffer ctermfg=248', false)
+vim.cmd.highlight('MoreMsg ctermfg=115')
+vim.cmd.highlight('ModeMsg ctermfg=white cterm=bold')
+vim.cmd.highlight('Directory ctermfg=153')
+vim.cmd.highlight('PmenuSel ctermbg=24')
+vim.cmd.highlight('FloatBorder ctermbg=234 ctermfg=238')
 
-vim.api.nvim_exec('highlight DiagnosticWarn ctermfg=222', false)
-vim.api.nvim_exec('highlight WarningMsg ctermfg=222 cterm=NONE', false)
-vim.api.nvim_exec('highlight DiagnosticError ctermfg=203', false)
-vim.api.nvim_exec('highlight ErrorMsg ctermbg=NONE ctermfg=203 cterm=NONE', false)
-vim.api.nvim_exec('highlight DiagnosticInfo ctermfg=153', false)
-vim.api.nvim_exec('highlight DiagnosticHint ctermfg=115', false)
+vim.cmd.highlight('CursorLine ctermbg=233')
+vim.cmd.highlight('CursorLineNr ctermbg=233 ctermfg=white cterm=bold')
+vim.cmd.highlight('LineNr ctermfg=248')
+vim.cmd.highlight('EndOfBuffer ctermfg=248')
 
-vim.api.nvim_exec('highlight Search ctermbg=24 ctermfg=231', false)
-vim.api.nvim_exec('highlight IncSearch ctermbg=55 ctermfg=231', false)
-vim.api.nvim_exec('highlight CurSearch ctermbg=55 ctermfg=231', false)
+vim.cmd.highlight('PackerWorking ctermfg=248')
+vim.cmd.highlight('clear PackerSuccess')
+vim.cmd.highlight('link PackerSuccess DiffAdd')
 
-vim.api.nvim_exec('highlight DiffAdd ctermbg=NONE ctermfg=115', false)
-vim.api.nvim_exec('highlight DiffDelete ctermbg=NONE ctermfg=203', false)
-vim.api.nvim_exec('highlight DiffChange ctermbg=NONE ctermfg=216', false)
+vim.cmd.highlight('DiagnosticError ctermfg=203')
+vim.cmd.highlight('DiagnosticHint ctermfg=115')
+vim.cmd.highlight('DiagnosticInfo ctermfg=153')
+vim.cmd.highlight('DiagnosticWarn ctermfg=222')
+vim.cmd.highlight('ErrorMsg ctermbg=NONE ctermfg=203 cterm=NONE')
+vim.cmd.highlight('WarningMsg ctermfg=222 cterm=NONE')
+vim.cmd.highlight('Error ctermbg=NONE ctermfg=203 cterm=bold')
+
+vim.cmd.highlight('Search ctermbg=24 ctermfg=231')
+vim.cmd.highlight('IncSearch ctermbg=55 ctermfg=231')
+vim.cmd.highlight('CurSearch ctermbg=55 ctermfg=231')
+
+vim.cmd.highlight('DiffAdd ctermbg=NONE ctermfg=115')
+vim.cmd.highlight('DiffChange ctermbg=NONE ctermfg=216')
+vim.cmd.highlight('DiffDelete ctermbg=NONE ctermfg=203')
+vim.cmd.highlight('diffLine ctermfg=white cterm=bold')
+vim.cmd.highlight('diffSubname ctermfg=250 cterm=bold')
+
+vim.cmd.highlight('clear diffAdded')
+vim.cmd.highlight('clear diffChanged')
+vim.cmd.highlight('clear diffFile')
+vim.cmd.highlight('clear diffIndexLine')
+vim.cmd.highlight('clear diffRemoved')
+
+vim.cmd.highlight('link diffAdded DiffAdd')
+vim.cmd.highlight('link diffChanged DiffChange')
+vim.cmd.highlight('link diffFile Constant')
+vim.cmd.highlight('link diffIndexLine Constant')
+vim.cmd.highlight('link diffRemoved DiffDelete')
 
 -- undo these format options
 vim.api.nvim_create_autocmd({ 'FileType' }, {
@@ -84,7 +109,7 @@ while not status do
         'https://github.com/wbthomason/packer.nvim',
         vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim',
     })
-    vim.api.nvim_command('packadd packer.nvim')
+    vim.cmd.packadd('packer.nvim')
     firstRun = true
     status, packer = pcall(require, 'packer')
 end
@@ -127,11 +152,20 @@ packer.startup(function()
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup({
-                current_line_blame = true,
-                current_line_blame_opts = {
-                    delay = 100,
+                preview_config = {
+                    border = {
+                        { '🭽', 'FloatBorder' },
+                        { '▔', 'FloatBorder' },
+                        { '🭾', 'FloatBorder' },
+                        { '▕', 'FloatBorder' },
+                        { '🭿', 'FloatBorder' },
+                        { '▁', 'FloatBorder' },
+                        { '🭼', 'FloatBorder' },
+                        { '▏', 'FloatBorder' },
+                    },
+                    row = 1,
+                    col = 0,
                 },
-                current_line_blame_formatter = '<abbrev_sha>, <author>, <author_time:%Y-%m-%d>',
                 on_attach = function()
                     vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { link = 'Comment' })
                     vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'DiffAdd' })
